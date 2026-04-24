@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>IRATA Rope Access | Evaluación de perfil y recomendaciones</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f0f4f8;
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            padding: 2rem 1rem;
+            color: #1a2c3e;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* tarjetas */
+        .card {
+            background: white;
+            border-radius: 28px;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+            padding: 1.8rem 2rem;
+            margin-bottom: 2rem;
+            transition: all 0.2s;
+        }
+
+        h1 {
+            font-size: 1.9rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #1e4b6e, #2c7a4d);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .sub {
+            color: #4a627a;
+            border-left: 4px solid #2c7a4d;
+            padding-left: 1rem;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1f3b4c;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 1rem 0 0.5rem 0;
+            color: #2c5a6e;
+        }
+
+        .radio-group, .select-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .radio-option {
+            background: #f9fafc;
+            border: 1px solid #dce5ef;
+            border-radius: 2rem;
+            padding: 0.6rem 1.2rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+
+        .radio-option.selected {
+            background: #e1f0fa;
+            border-color: #2c7a4d;
+            color: #1f5e3a;
+            box-shadow: 0 2px 6px rgba(44,122,77,0.2);
+        }
+
+        input[type="radio"], input[type="checkbox"] {
+            display: none;
+        }
+
+        .inline-select {
+            margin-top: 0.5rem;
+            padding: 0.6rem 1rem;
+            border-radius: 2rem;
+            border: 1px solid #cbdde9;
+            background: white;
+            font-size: 0.95rem;
+            width: 100%;
+            max-width: 280px;
+        }
+
+        .warning-box {
+            background: #fff7e5;
+            border-left: 6px solid #e6b422;
+            padding: 1.2rem;
+            border-radius: 24px;
+            margin: 1.2rem 0;
+        }
+
+        .info-box {
+            background: #eef2fa;
+            border-left: 6px solid #2c7a4d;
+            padding: 1.2rem;
+            border-radius: 24px;
+            margin: 1.2rem 0;
+        }
+
+        .leyenda {
+            background: #e9f3ef;
+            border-radius: 20px;
+            padding: 1rem 1.4rem;
+            margin: 0.8rem 0;
+            font-weight: 500;
+            border-left: 5px solid #1e6f5c;
+        }
+
+        button {
+            background: #1e6f5c;
+            color: white;
+            border: none;
+            padding: 0.9rem 1.8rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: 0.2s;
+            width: 100%;
+            margin-top: 0.5rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+
+        button:hover {
+            background: #0f5b4a;
+            transform: scale(0.98);
+        }
+
+        .result-area {
+            margin-top: 1.5rem;
+        }
+
+        hr {
+            margin: 1rem 0;
+            border: none;
+            height: 1px;
+            background: #d4e0ea;
+        }
+
+        .badge {
+            font-size: 0.85rem;
+            background: #e2e8f0;
+            display: inline-block;
+            border-radius: 40px;
+            padding: 0.2rem 0.8rem;
+        }
+
+        @media (max-width: 680px) {
+            .card {
+                padding: 1.3rem;
+            }
+            .radio-group {
+                gap: 0.7rem;
+            }
+        }
+        .link-test {
+            color: #1f6e4a;
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 1px dashed;
+        }
+        .link-test:hover {
+            color: #0e4a33;
+        }
+        footer {
+            text-align: center;
+            font-size: 0.75rem;
+            color: #6c86a3;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <h1>🧗 IRATA Rope Access</h1>
+        <div class="sub">Perfil para trabajar en altura · Nueva Zelanda</div>
+
+        <!-- SECCIÓN 1: Experiencia física (puntos internos no visibles) -->
+        <h2>🏗️ Experiencia laboral en trabajos físicos</h2>
+        <div id="expGroup" class="radio-group">
+            <label class="radio-option" data-exp="bastante">
+                <input type="radio" name="expFisica" value="bastante"> Bastante <span style="font-weight:normal">(años en construcción, mantenimiento)</span>
+            </label>
+            <label class="radio-option" data-exp="ninguna">
+                <input type="radio" name="expFisica" value="ninguna"> Ninguna <span style="font-weight:normal">(oficinista u otros con poca intervención motriz o similar)</span>
+            </label>
+            <label class="radio-option" data-exp="alguna">
+                <input type="radio" name="expFisica" value="alguna"> Alguna <span style="font-weight:normal">(trabajos eventuales físicos)</span>
+            </label>
+        </div>
+
+        <!-- SECCIÓN 2: Visa + detalle WH -->
+        <h2>🛂 Situación migratoria actual</h2>
+        <div id="visaGroup" class="radio-group">
+            <label class="radio-option" data-visa="turista">
+                <input type="radio" name="visaType" value="turista"> Visa de Turista
+            </label>
+            <label class="radio-option" data-visa="estudiante">
+                <input type="radio" name="visaType" value="estudiante"> Visa de Estudiante
+            </label>
+            <label class="radio-option" data-visa="wh" id="whLabel">
+                <input type="radio" name="visaType" value="wh"> Working Holiday
+            </label>
+            <label class="radio-option" data-visa="residente">
+                <input type="radio" name="visaType" value="residente"> Residente / Ciudadano
+            </label>
+        </div>
+        <div id="whMonthsContainer" style="display: none; margin-top: 12px;">
+            <label for="whMonths">📅 Meses restantes de la WH:</label>
+            <select id="whMonths" class="inline-select">
+                <option value="menos3">Menos de 3 meses</option>
+                <option value="entre3y6">Entre 3 y 6 meses</option>
+                <option value="mas6">Más de 6 meses</option>
+            </select>
+        </div>
+
+        <!-- SECCIÓN 3: Nivel de inglés -->
+        <h2>📘 Nivel de inglés</h2>
+        <div id="engGroup" class="radio-group">
+            <label class="radio-option" data-eng="bajo"><input type="radio" name="ingles" value="bajo"> Bajo (básico / dificultad para mantener conversación)</label>
+            <label class="radio-option" data-eng="medio"><input type="radio" name="ingles" value="medio"> Intermedio (conversación fluida pero con errores)</label>
+            <label class="radio-option" data-eng="alto"><input type="radio" name="ingles" value="alto"> Alto (avanzado / profesional)</label>
+        </div>
+
+        <!-- SECCIÓN 4: Condición física -->
+        <h2>💪 Condición física actual</h2>
+        <div id="fitnessGroup" class="radio-group">
+            <label class="radio-option" data-fit="baja"><input type="radio" name="fitness" value="baja"> Baja (sedentarismo, poca fuerza / resistencia)</label>
+            <label class="radio-option" data-fit="media"><input type="radio" name="fitness" value="media"> Media (actividad ocasional)</label>
+            <label class="radio-option" data-fit="alta"><input type="radio" name="fitness" value="alta"> Alta (entreno regular, buena base física)</label>
+        </div>
+
+        <button id="evaluarBtn">📋 Evaluar mi perfil y obtener recomendaciones</button>
+
+        <div id="resultados" class="result-area"></div>
+    </div>
+
+    <!-- Información general fija (mejorada) -->
+    <div class="card">
+        <h2>⚠️ Información clave para trabajar en Rope Access</h2>
+        <div class="warning-box">
+            <strong>⚠️ IMPORTANTE:</strong> Con visa de turista, estudiante o Working Holiday con <strong>menos de 3 meses de validez</strong>, obtener un certificado IRATA <strong>NO garantiza</strong> conseguir un sponsor laboral. Lo ideal para aumentar chances de eventualmente obtener un sponsor es al menos una <strong>Working Holiday Visa con mínimo 6 meses restantes</strong> para poder conseguir un trabajo y, luego de que la empresa te haya probado, empezar a negociar el sponsor (depende de cada empresa).
+        </div>
+        <div class="info-box">
+            <strong>📌 Importante:</strong> Obtener una certificación IRATA <strong>no te da derecho a trabajar</strong>. El rope access se trabaja en equipos, por lo que los primeros años es muy importante trabajar con una empresa para entender todo el tema de seguridad, inspección de equipos, permisos y aprender a realizar trabajos de forma segura en altura.
+        </div>
+        <div class="info-box">
+            <strong>📘 Test de inglés gratuito:</strong> Para conocer tu nivel real, realiza el test oficial de Preply → <a href="https://preply.com/en/language-tests/english/questions" target="_blank" class="link-test">https://preply.com/en/language-tests/english/questions</a><br>
+            🔹 Si querés mejorar, pago clases online desde <strong>10 NZD la hora</strong>, lo super recomiendo.<br>
+            🔹 Descuento / Referencia: <a href="https://preply.com/en/?pref=MTE3NTY5NTM=&id=1776987124.417025&ep=w1" target="_blank" class="link-test">Clases con descuento</a>
+        </div>
+        <div class="info-box">
+            <strong>🏋️ Entrenamiento recomendado:</strong> 3 veces por semana, 40 minutos: sentadillas, flexiones y plancha (plank). Esas 3 cosas son el <strong>core</strong> para trabajar en altura.
+        </div>
+        <div class="info-box">
+            <strong>📅 Temporada alta de trabajos:</strong> Septiembre a Junio.<br>
+            El otoño/invierno es el momento ideal para hacer el curso. Si <strong>no tenés experiencia en oficios</strong> podés empezar trabajos de construcción para aprender cómo es la cultura de trabajo en New Zealand, y paralelamente aplicar a trabajos de rope access.
+        </div>
+    </div>
+    <footer>La certificación IRATA aumenta oportunidades, pero no es un permiso de trabajo. Evalúa siempre tu contexto migratorio.</footer>
+</div>
+
+<script>
+    // helper para estilos visuales de los radio custom
+    function initRadioStyles() {
+        const groups = ['#expGroup .radio-option', '#visaGroup .radio-option', '#engGroup .radio-option', '#fitnessGroup .radio-option'];
+        groups.forEach(selector => {
+            document.querySelectorAll(selector).forEach(opt => {
+                opt.addEventListener('click', function(e) {
+                    const parent = this.parentElement;
+                    const container = this.closest('.radio-group');
+                    container.querySelectorAll('.radio-option').forEach(el => el.classList.remove('selected'));
+                    this.classList.add('selected');
+                    const radio = this.querySelector('input[type="radio"]');
+                    if(radio) radio.checked = true;
+                });
+            });
+        });
+        // preseleccionar ninguno por defecto (sin puntos visibles)
+        const defaultExp = document.querySelector('#expGroup .radio-option[data-exp="ninguna"]');
+        if(defaultExp) defaultExp.click();
+    }
+
+    // mostrar/ocultar selector de meses WH
+    const visaRadios = document.querySelectorAll('input[name="visaType"]');
+    const whContainer = document.getElementById('whMonthsContainer');
+    function handleWhVisibility() {
+        const selectedVisa = document.querySelector('input[name="visaType"]:checked');
+        if(selectedVisa && selectedVisa.value === 'wh') {
+            whContainer.style.display = 'block';
+        } else {
+            whContainer.style.display = 'none';
+        }
+    }
+    visaRadios.forEach(radio => radio.addEventListener('change', handleWhVisibility));
+    handleWhVisibility();
+
+    // Puntos internos para experiencia física (solo cálculos, NO se muestran)
+    function getExpPoints(expValue) {
+        if(expValue === 'bastante') return 3;
+        if(expValue === 'alguna') return 1;
+        return 0; // ninguna
+    }
+
+    // LÓGICA DE LEYENDAS DINÁMICAS (basado en perfil)
+    function generarRecomendaciones(perfil) {
+        const { visa, whMonths, ingles, fitness, expFisica } = perfil;
+        let recomendaciones = [];
+
+        // 1. Inglés bajo → siempre recomendar estudio + test Preply
+        if(ingles === 'bajo') {
+            recomendaciones.push('📘 <strong>Mejorar tu inglés es prioritario:</strong> realizá el test gratuito de Preply (link arriba). Tomá clases online desde 10 NZD/hora. Un inglés fluido multiplica tus chances de sponsor.');
+        }
+
+        // 2. Condición física baja o media? (media se puede mejorar, pero baja es crítica)
+        if(fitness === 'baja') {
+            recomendaciones.push('💪 <strong>Condición física baja.</strong> Entrená 3 veces/semana (sentadillas, flexiones, plancha). El rope access exige fuerza y resistencia. Comenzá ya con 40 min diarios.');
+        } else if(fitness === 'media') {
+            recomendaciones.push('⚡ Tu condición física es media. Para trabajar en altura con seguridad, ideal llegar a nivel alto. Incorporá plancha y sentadillas 3 veces/semana para fortalecer el core.');
+        }
+
+        // 3. Si experiencia física es "ninguna" y no tiene experiencia de oficios → sugerencia construcción
+        if(expFisica === 'ninguna') {
+            recomendaciones.push('🏗️ <strong>Sin experiencia en trabajos físicos:</strong> antes de ir por IRATA, te sugerimos trabajar unos meses en construcción en NZ para aprender la cultura laboral, seguridad y exigencia física. Es un gran punto de partida.');
+        }
+
+        // 4. Lógica migratoria estricta
+        if(visa === 'turista') {
+            recomendaciones.push('⚠️ <strong>Visa de turista:</strong> No recomendamos hacer el curso si tu objetivo principal es conseguir sponsor. Las chances son extremadamente bajas. Este perfil no es apto para trabajar legalmente.');
+        }
+        else if(visa === 'estudiante') {
+            recomendaciones.push('🎓 <strong>Visa de estudiante:</strong> Puedes hacer el curso, pero ten expectativas realistas: obtener un sponsor laboral es muy difícil (permisos de trabajo restringidos). Aprovecha para mejorar inglés y condición física.');
+        }
+        else if(visa === 'wh') {
+            if(whMonths === 'menos3') {
+                recomendaciones.push('⏳ <strong>WH con menos de 3 meses de validez:</strong> casi imposible conseguir sponsor en ese plazo. Si igual haces el curso, úsalo como experiencia personal, pero no dependas de sponsor.');
+            } 
+            else if(whMonths === 'entre3y6') {
+                recomendaciones.push('📆 <strong>WH entre 3 y 6 meses:</strong> plazo ajustado. Las empresas necesitan al menos probarte varios meses antes de sponsor. Si tienes buen inglés y condición física, podrías intentarlo, pero con urgencia.');
+            }
+            else if(whMonths === 'mas6') {
+                recomendaciones.push('✅ <strong>WH con más de 6 meses:</strong> perfil con potencial. Podés formarte, buscar trabajo de construcción o rope access junior y negociar sponsor después de que te conozcan. Es tu mejor escenario.');
+            }
+            // Recomendación combinada especial si WH + inglés bajo + fitness baja (ejemplo pero cubre todos)
+            if(ingles === 'bajo' && fitness === 'baja') {
+                recomendaciones.push('🔁 <strong>Combinación sensible:</strong> WH + inglés bajo + condición baja. Trabajá primero en inglés (test Preply) y rutina física 3x/semana. Sin esas bases, el sponsor será muy difícil.');
+            }
+        }
+        else if(visa === 'residente') {
+            recomendaciones.push('🟢 <strong>Residente/Ciudadano:</strong> tienes la gran ventaja de poder trabajar sin restricciones. Enfócate en obtener la certificación IRATA, mejorar inglés (si es bajo) y condición física para acceder a mejores roles.');
+        }
+
+        // Si inglés es bajo + además cualquier visa que no sea residente, insistimos test
+        if(ingles === 'bajo' && visa !== 'residente') {
+            recomendaciones.push('🎯 <strong>Antes de invertir en IRATA:</strong> alcanza al menos un inglés intermedio. El test de Preply te dará tu nivel real.');
+        }
+
+        // Eliminar duplicados aproximados (por texto)
+        recomendaciones = [...new Map(recomendaciones.map(r => [r.replace(/<[^>]*>/g, ''), r])).values()];
+        return recomendaciones;
+    }
+
+    // Función principal que evalúa y muestra resultados
+    function evaluarPerfil() {
+        // Obtener valores seleccionados
+        const expRadio = document.querySelector('input[name="expFisica"]:checked');
+        if(!expRadio) {
+            alert("Por favor, selecciona tu experiencia en trabajos físicos.");
+            return;
+        }
+        const visaRadio = document.querySelector('input[name="visaType"]:checked');
+        if(!visaRadio) {
+            alert("Selecciona tu tipo de visa.");
+            return;
+        }
+        const inglesRadio = document.querySelector('input[name="ingles"]:checked');
+        if(!inglesRadio) {
+            alert("Indica tu nivel de inglés.");
+            return;
+        }
+        const fitnessRadio = document.querySelector('input[name="fitness"]:checked');
+        if(!fitnessRadio) {
+            alert("Selecciona tu condición física actual.");
+            return;
+        }
+
+        const expValue = expRadio.value;
+        const visaValue = visaRadio.value;
+        const inglesValue = inglesRadio.value;
+        const fitnessValue = fitnessRadio.value;
+        
+        let whMonthsValue = null;
+        if(visaValue === 'wh') {
+            const whSelect = document.getElementById('whMonths');
+            whMonthsValue = whSelect.value;
+        }
+
+        // puntos internos (solo para cálculo futuro invisible, pero no se muestran)
+        const puntosExp = getExpPoints(expValue);
+        console.log("Puntos experiencia (internos, no visibles):", puntosExp); // solo debug interno
+
+        const perfil = {
+            visa: visaValue,
+            whMonths: whMonthsValue,
+            ingles: inglesValue,
+            fitness: fitnessValue,
+            expFisica: expValue
+        };
+
+        const recomendacionesList = generarRecomendaciones(perfil);
+        
+        // Construir HTML de resultados
+        let html = `<div style="margin-top: 1rem;"><hr><h3>📌 Recomendaciones personalizadas para tu perfil</h3>`;
+        if(recomendacionesList.length === 0) {
+            html += `<div class="leyenda">✅ Tu perfil tiene una base sólida. Asegúrate de cumplir con los puntos de información general y sigue fortaleciendo inglés/condición física para maximizar oportunidades.</div>`;
+        } else {
+            recomendacionesList.forEach(rec => {
+                html += `<div class="leyenda">🔹 ${rec}</div>`;
+            });
+        }
+        
+        // Agregar recordatorio final sobre temporada y construcción según experiencia
+        if(expValue === 'ninguna') {
+            html += `<div class="info-box" style="margin-top: 1rem;"><strong>🛠️ Dato útil:</strong> Como no tienes experiencia en oficios, aprovecha el otoño/invierno para hacer trabajos de construcción y aprender la cultura laboral de NZ mientras mejoras tu físico.</div>`;
+        } else {
+            html += `<div class="info-box" style="margin-top: 1rem;"><strong>📅 Recordatorio:</strong> La temporada alta es de Septiembre a Junio. El otoño/invierno es ideal para certificarte y postular a empresas de rope access si ya tienes base física/oficio.</div>`;
+        }
+        
+        // mensaje adicional según visa y meses
+        if(visaValue === 'wh' && whMonthsValue === 'mas6' && inglesValue !== 'bajo' && fitnessValue !== 'baja') {
+            html += `<div class="warning-box" style="background:#e0f2e9;">✅ Excelente perfil: Con WH +6 meses, inglés sólido y buena condición, tienes altas posibilidades de conseguir trabajo y luego sponsor. ¡Enfócate en cursos IRATA y red de contactos!</div>`;
+        } else if(visaValue === 'turista' || visaValue === 'estudiante' || (visaValue === 'wh' && whMonthsValue === 'menos3')) {
+            html += `<div class="warning-box">⚠️ <strong>Reflexión importante:</strong> Con tu situación migratoria actual, obtener un sponsor laboral es muy difícil. Recomendamos enfocarte primero en cambiar tu estatus a una WH de mayor duración o residencia antes de invertir en IRATA pensando en trabajo legal.</div>`;
+        }
+        
+        html += `<hr><p class="badge">🔍 Los puntos de experiencia laboral son solo para nuestros cálculos internos. Las recomendaciones se basan en visa, inglés, condición física y experiencia.</p>`;
+        html += `<p style="font-size:0.85rem; margin-top:0.8rem;">💡 Recordá: el certificado IRATA no garantiza sponsor; trabajar en equipo y la seguridad son claves los primeros años.</p>`;
+        html += `</div>`;
+        
+        const resultDiv = document.getElementById('resultados');
+        resultDiv.innerHTML = html;
+        window.scrollTo({ top: resultDiv.offsetTop - 20, behavior: 'smooth' });
+    }
+
+    // eventos
+    document.getElementById('evaluarBtn').addEventListener('click', evaluarPerfil);
+    initRadioStyles();
+    // Trigger inicial para que haya al menos un valor por defecto en exp (ninguna)
+    if(!document.querySelector('input[name="expFisica"]:checked')) {
+        const ningunaExp = document.querySelector('#expGroup .radio-option[data-exp="ninguna"]');
+        if(ningunaExp) ningunaExp.click();
+    }
+    if(!document.querySelector('input[name="visaType"]:checked')) {
+        const defaultVisa = document.querySelector('#visaGroup .radio-option[data-visa="residente"]');
+        if(defaultVisa) defaultVisa.click();
+    }
+    if(!document.querySelector('input[name="ingles"]:checked')) {
+        const defaultEng = document.querySelector('#engGroup .radio-option[data-eng="medio"]');
+        if(defaultEng) defaultEng.click();
+    }
+    if(!document.querySelector('input[name="fitness"]:checked')) {
+        const defaultFit = document.querySelector('#fitnessGroup .radio-option[data-fit="media"]');
+        if(defaultFit) defaultFit.click();
+    }
+    handleWhVisibility();
+</script>
+</body>
+</html>
